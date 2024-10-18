@@ -31,7 +31,7 @@ services:
     image: jaramillojst/caseapi:latest
     container_name: case-api
     expose:
-      - "3000"
+      - "3002"
     depends_on:
       - mongo
     environment:
