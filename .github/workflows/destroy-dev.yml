@@ -2,11 +2,11 @@ name: Destroy Dev Infrastructure
 on:
     workflow_dispatch:
 
-permissions: 
+permissions:
   id-token: write
   contents: read
   pull-requests: write
- 
+
 env:
   ARM_CLIENT_ID: "${{secrets.ARM_CLIENT_ID}}"
   ARM_CLIENT_SECRET: "${{secrets.ARM_CLIENT_SECRET}}"
@@ -22,11 +22,10 @@ env:
   TF_VAR_MONGO_INITDB_ROOT_PASSWORD: "${{secrets.TF_VAR_MONGO_INITDB_ROOT_PASSWORD}}"
   TF_VAR_MONGO_INITDB_ROOT_USERNAME: "${{secrets.TF_VAR_MONGO_INITDB_ROOT_USERNAME}}"
   TF_VAR_DOMAIN: "${{secrets.TF_VAR_DOMAIN}}"
- 
+
 jobs:
     terraform-plan-apply:
         runs-on: ubuntu-latest
- 
         steps:
             - name: Clone repository
               uses: actions/checkout@v4
@@ -44,10 +43,9 @@ jobs:
               with:
                 terraform_version: 1.9.6
                 terraform_wrapper: false
-
+            
             - name: Terraform Init
               run: terraform -chdir=env/dev init
 
             - name: Terraform destroy
               run: terraform -chdir=env/dev destroy --auto-approve
-            
