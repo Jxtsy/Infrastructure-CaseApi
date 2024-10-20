@@ -19,7 +19,7 @@ module "dev_vm" {
   mongo_init_root_username = var.MONGO_INITDB_ROOT_USERNAME
   mongo_init_root_password = var.MONGO_INITDB_ROOT_PASSWORD
   mongo_db                 = var.MONGO_DB
-  ip_name                  = "IN-IP-JaramilloT"
+  ip_name                  = "IN-IP-JaramilloT" 
   vnet_name                = "IN-VNET-JaramilloT"
 }
 
